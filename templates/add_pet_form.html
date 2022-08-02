@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block title %}Add New Pet{% endblock %}
+{% block page_name %}Add New Pet{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-1 text-center">Add New Pet</h1>
+    <p>
+        {% for err in form.errors %}
+        {{err}}
+        {% endfor %}
+    </p>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                {{form.name.label}}
+                {{form.name(class_="form-control")}}
+            </div>
+            <div class="form-group col-md-4">
+                {{form.species.label}}
+                {{form.species(class_="form-control")}}
+            </div>
+            <div class="form-group col-md-4">
+                {{form.age.label}}
+                {{form.age(class_="form-control")}}
+            </div>
+        </div>
+        <div class="form-group">
+            {{form.photo_url.label}}
+            {{form.photo_url(class_="form-control")}}
+
+            {{form.notes.label}}
+            {{form.notes(class_="form-control")}}
+        </div>
+        
+        <button>Submit</button>
+    </form>
+</div>
+
+{% endblock %}

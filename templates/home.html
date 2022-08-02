@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% block title %}Pet List{% endblock %}
+{% block page_name %}Pet List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-1">Pet List</h1>
+
+    <div id="pet-container" class="row">
+        {% for pet in pets %}
+        <div class="col-md-3">
+            <img src="{{pet.photo_url}}" class="img-thumbnail" alt="picture of a pet">
+            <figcaption class="figure-caption">
+                {% if pet.available %}
+                <p><a href="{{pet.id}}">{{pet.name}}</a> is <span class="font-weight-bold">available</span></p>
+                {% endif %}
+            </figcaption>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="btn-container" class="text-center">
+        <a href="/add" class="btn btn-info m-2" role="button" aria-pressed="true">Add Pet</a>
+    </div>
+
+
+</div>
+
+
+{% endblock %}
